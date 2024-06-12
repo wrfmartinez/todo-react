@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css';
-import { toBeInTheDOM } from '@testing-library/jest-dom/dist/matchers';
 
 function App() {
   const [userInput, setUserInput] = useState("");

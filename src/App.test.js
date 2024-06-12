@@ -1,13 +1,13 @@
 import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders the Todo heading', () => {
+test('renders the Todooly heading', () => {
   const app = render(<App />);
   const heading = app.getByRole("heading")
   expect(heading).toHaveTextContent("Todooly");
 });
 
-test('Able to add todo items', () => {
+test('able to add todo items', () => {
   const app = render(<App />);
   let todoItem = null;
   const addButton = app.getByText("Add New");
@@ -20,7 +20,7 @@ test('Able to add todo items', () => {
   expect(todoItem).toBeInTheDocument()
 });
 
-test('Able to delete a todo item', () => {
+test('able to delete a todo item', () => {
   const app = render(<App />);
   let todoItem = null;
   let deleteButton = null;
