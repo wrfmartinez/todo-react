@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import { toBeInTheDOM } from '@testing-library/jest-dom/dist/matchers';
 
 function App() {
   const [userInput, setUserInput] = useState("");
@@ -8,6 +9,16 @@ function App() {
   const addTodo = () => {
     setTodoItems([...todoItems, userInput]);
     setUserInput("");
+  }
+
+  const deleteTodo = (idx) => {
+    const updatedTodos = [];
+    for (let i = 0; i < todoItems.length; i++) {
+      if (i !== idx) {
+        updatedTodos.push(todoItems[i]);
+      }
+    }
+    setTodoItems(updatedTodos);
   }
 
   const handleInputChange = (e) => {
@@ -27,7 +38,7 @@ function App() {
       <button onClick={addTodo}>Add New</button>
       <ul className='todo-list'>
         {todoItems.map((todoItem, idx) => {
-          return <li className={idx}>{todoItem}</li>
+          return <li className={idx}>{todoItem} <button onClick={() => deleteTodo(idx)}>Delete</button></li>
         })}
       </ul>
     </>
